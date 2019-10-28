@@ -1,0 +1,29 @@
+name: test-snapd-glxgears
+base: core
+version: "16"
+summary: glxgears
+description: glxgears
+
+grade: stable
+confinement: strict
+
+apps:
+  glxgears:
+    adapter: full
+    command: usr/bin/glxgears
+    command-chain:
+      - ld-dir-path.sh
+    plugs:
+      - opengl
+      - x11
+
+parts:
+  wrappers:
+    plugin: dump
+    source: .
+    prime: [-*.snap]
+  glxgears:
+    plugin: nil
+    stage-packages:
+      - mesa-utils
+      - libglu1-mesa

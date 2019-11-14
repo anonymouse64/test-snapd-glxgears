@@ -8,6 +8,14 @@ grade: stable
 confinement: strict
 
 apps:
+  glxinfo:
+    adapter: full
+    command: usr/bin/glxinfo
+    command-chain:
+      - ld-dir-path.sh
+    plugs:
+      - opengl
+      - x11
   glxgears:
     adapter: full
     command: usr/bin/glxgears
